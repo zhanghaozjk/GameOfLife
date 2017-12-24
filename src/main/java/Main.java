@@ -3,7 +3,7 @@ package cn.hcven;
 public class Main {
 
     public static void main(String[] args) {
-        AllCells cells = new AllCells(4,4);
+        AllCells cells = new AllCells(8,8);
 
         cells.setAlive(3, 2);
         cells.setAlive(2, 3);

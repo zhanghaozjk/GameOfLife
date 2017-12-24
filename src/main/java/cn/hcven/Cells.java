@@ -16,6 +16,9 @@ public class Cells {
         }
     }
 
+    public boolean getStatus(){
+        return alive;
+    }
     public boolean setDie(){
         try {
             this.alive = false;

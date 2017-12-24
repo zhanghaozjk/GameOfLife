@@ -8,6 +8,7 @@ public class AllCells {
         this.length = 0;
         this.width = 0;
     }
+
     public AllCells(int length, int width){
         this.length = length;
         this.width = width;
@@ -18,6 +19,11 @@ public class AllCells {
             }
         }
     }
+
+    public boolean getStatus(int x, int y){
+        return allcells[x][y].getStatus();
+    }
+
     public boolean setAlive(int x, int y){
         try {
             allcells[x][y].setAlive();
@@ -26,6 +32,7 @@ public class AllCells {
             return false;
         }
     }
+
 
     public boolean print(){
         for (int i = 0; i < width; i++){
@@ -42,7 +49,7 @@ public class AllCells {
         return true;
     }
 
-    int summer(int i, int j){
+    public int summer(int i, int j){
         int sum = -1;
         int x = i - 1;
         int y = j - 1;
@@ -73,24 +80,34 @@ public class AllCells {
     }
 
     public boolean flush(){
+        AllCells cellsCopy = new AllCells(length, width);
+//        for (int i = 0; i < length; i++){
+//            for (int j = 0; j < width; j++) {
+//                cellsCopy.allcells[i][j] = this.allcells[i][j];
+//            }
+//        }
+
         int sum = 0;
         for (int i = 0; i< length; i++){
             for (int j = 0; j < width; j++){
                 if (allcells[i][j].isAlive()){
                     sum = summer(i, j);
                     if (sum == 0 || sum == 1) {
-                        allcells[i][j].setDie();
+                        cellsCopy.allcells[i][j].setDie();
                     } else if (sum > 3) {
-                        allcells[i][j].setDie();
+                        cellsCopy.allcells[i][j].setDie();
+                    } else if (sum == 2 || sum == 3) {
+                        cellsCopy.allcells[i][j].setAlive();
                     }
                 } else {
                     sum = summer(i, j);
                     if (sum == 2) {
-                        allcells[i][j].setAlive();
+                        cellsCopy.allcells[i][j].setAlive();
                     }
                 }
             }
         }
+        this.allcells = cellsCopy.allcells;
         return true;
     }
 }

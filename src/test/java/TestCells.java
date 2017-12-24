@@ -11,4 +11,5 @@ public class TestCells extends TestCase{
         boolean truth = cells.setDie();
         assertTrue(truth);
     }
+
 }
