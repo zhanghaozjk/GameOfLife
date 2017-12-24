@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/zhanghaozjk/GameOfLife.svg?branch=master)](https://travis-ci.org/zhanghaozjk/GameOfLife)
+
+
 生命游戏中，对于任意细胞，规则如下：
 每个细胞有两种状态-存活或死亡，每个细胞与以自身为中心的周围八格细胞产生互动。（如图，黑色为存活，白色为死亡）
 
